@@ -2,7 +2,7 @@
 
 Video/Image filter to undo upscaling.
 
-This fork only supports VapourSynth, none of the new options are mapped in AviSynth. PRs to add AviSynth support are welcome, but apart from that the AviSynth plugin can be considered frozen.
+Includes a VapourSynth and AviSynth+ plugin
 
 ## Usage
 
@@ -37,7 +37,7 @@ The `opt` argument can take the following values:
 - 2: Use AVX2
 
 The AviSynth+ plugin is used similarly, but without the `descale` namespace.
-Custom kernels and ignore masks are only supported in the VapourSynth plugin.
+Custom kernels are only supported in the VapourSynth plugin.
 
 ### Custom kernels
 
