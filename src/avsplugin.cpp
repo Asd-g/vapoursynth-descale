@@ -337,8 +337,8 @@ static AVS_Value AVSC_CC avs_descale_create(AVS_ScriptEnvironment* env, AVS_Valu
     }
 
     if (type == FilterType::FULL) {
-        std::string_view kernel_sv = avs_helpers::get_opt_arg<std::string_view>(env, args, indices.kernel).value();
-        if (kernel_sv.empty())
+        const auto kernel_sv = avs_helpers::get_opt_arg<std::string_view>(env, args, indices.kernel);
+        if (!kernel_sv)
             return avs_new_value_error("Descale: kernel argument is null.");
 
         auto string_view_equals_ignore_case = [&](std::string_view a, std::string_view b) {
@@ -347,19 +347,19 @@ static AVS_Value AVSC_CC avs_descale_create(AVS_ScriptEnvironment* env, AVS_Valu
             });
         };
 
-        if (string_view_equals_ignore_case(kernel_sv, "bilinear"))
+        if (string_view_equals_ignore_case(*kernel_sv, "bilinear"))
             mode = DESCALE_MODE_BILINEAR;
-        else if (string_view_equals_ignore_case(kernel_sv, "bicubic"))
+        else if (string_view_equals_ignore_case(*kernel_sv, "bicubic"))
             mode = DESCALE_MODE_BICUBIC;
-        else if (string_view_equals_ignore_case(kernel_sv, "lanczos"))
+        else if (string_view_equals_ignore_case(*kernel_sv, "lanczos"))
             mode = DESCALE_MODE_LANCZOS;
-        else if (string_view_equals_ignore_case(kernel_sv, "spline16"))
+        else if (string_view_equals_ignore_case(*kernel_sv, "spline16"))
             mode = DESCALE_MODE_SPLINE16;
-        else if (string_view_equals_ignore_case(kernel_sv, "spline36"))
+        else if (string_view_equals_ignore_case(*kernel_sv, "spline36"))
             mode = DESCALE_MODE_SPLINE36;
-        else if (string_view_equals_ignore_case(kernel_sv, "spline64"))
+        else if (string_view_equals_ignore_case(*kernel_sv, "spline64"))
             mode = DESCALE_MODE_SPLINE64;
-        else if (string_view_equals_ignore_case(kernel_sv, "point"))
+        else if (string_view_equals_ignore_case(*kernel_sv, "point"))
             mode = DESCALE_MODE_POINT;
         else
             return avs_new_value_error("Descale: Invalid kernel specified.");
