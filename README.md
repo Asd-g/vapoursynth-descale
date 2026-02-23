@@ -39,6 +39,24 @@ The `opt` argument can take the following values:
 The AviSynth+ plugin is used similarly, but without the `descale` namespace.
 Custom kernels are only supported in the VapourSynth plugin.
 
+```
+Debilinear(clip input, int width, int height, float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Debicubic(clip input, int width, int height, float "b", float "c", float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Delanczos(clip input, int width, int height, int "taps", float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Despline16(clip input, int width, int height, float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Despline36(clip input, int width, int height, float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Despline64(clip input, int width, int height, float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Depoint(clip input, int width, int height, float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+
+Descale(clip input, int width, int height, string "kernel", int "taps", float "b", float "c", float "blur", float "post_conv", float "src_left", float "src_top", float "src_width", float "src_height", int "border_handling", clip "ignore_mask", int "opt")
+```
+
 ### Custom kernels
 
 ```python
